@@ -14,7 +14,7 @@ c = 7654321;
 * Seeds this pseudo-random number generator with a provided value.
 * If a seed is not provided, random values will still be safe to use.
 * All values of [0, UINT_MAX] are safe to use.
-* Ω(1), Θ(1), O(1)
+* Θ(1)
 */
 void rand_seed(const unsigned int seed)
 {
@@ -24,7 +24,7 @@ void rand_seed(const unsigned int seed)
 /*
 * Generates a pseudo-random unsigned integer value from the current sequence.
 * See: `KISS` documentation.
-* Ω(1), Θ(1), O(1)
+* Θ(1)
 */
 unsigned int rand_next()
 {
@@ -35,7 +35,7 @@ unsigned int rand_next()
 * Keep It Simple Stupid (KISS)
 * Source: https://en.wikipedia.org/wiki/KISS_(algorithm)
 * y, z, and c cannot be set to zero.
-* Ω(1), Θ(1), O(1)
+* Θ(1)
 */
 static unsigned int rand_KISS()
 {
@@ -51,12 +51,12 @@ static unsigned int rand_KISS()
 	t = a*z + c;
 	c = (t >> 32);
 
-	return x + y + (z = t);
+	return x + y + (z = (unsigned int)t);
 }
 
 /*
 * Returns a pseudo-random unsigned integer in the domain of [0,limit).
-* Ω(1), Θ(1), O(1)
+* Θ(1)
 */
 unsigned int rand_limit(const unsigned int limit)
 {

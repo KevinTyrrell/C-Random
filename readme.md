@@ -1,6 +1,3 @@
-# (GitHub-Flavored) Markdown Editor
-
-
 
 ## Random in C
 

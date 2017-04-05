@@ -32,6 +32,24 @@ unsigned int rand_next()
 }
 
 /*
+* Returns a pseudo-random unsigned integer in the domain of [0,limit).
+* Θ(1)
+*/
+unsigned int rand_limit(const unsigned int limit)
+{
+	return rand_KISS() % limit;
+}
+
+/*
+ * Returns a pseudo-random boolean value based on the current sequence.
+ * Θ(1)
+ */
+bool rand_bool()
+{
+	return rand_limit(2) == 0;
+}
+
+/*
 * Keep It Simple Stupid (KISS)
 * Source: https://en.wikipedia.org/wiki/KISS_(algorithm)
 * y, z, and c cannot be set to zero.
@@ -48,17 +66,8 @@ static unsigned int rand_KISS()
 	y ^= (y >> 17);
 	y ^= (y << 5);
 
-	t = a*z + c;
+	t = a * z + c;
 	c = (t >> 32);
 
 	return x + y + (z = (unsigned int)t);
-}
-
-/*
-* Returns a pseudo-random unsigned integer in the domain of [0,limit).
-* Θ(1)
-*/
-unsigned int rand_limit(const unsigned int limit)
-{
-	return rand_KISS() % limit;
 }

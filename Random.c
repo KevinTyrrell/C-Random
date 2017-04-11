@@ -18,7 +18,8 @@ c = 7654321;
 */
 void rand_seed(const unsigned int seed)
 {
-	x += seed;
+	/* Add `2` to the seed to prevent seeds of `0` and `1`. */
+	z *= seed + 2;
 }
 
 /*

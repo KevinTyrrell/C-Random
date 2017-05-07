@@ -41,6 +41,15 @@ unsigned int rand_limit(const unsigned int limit)
 	return rand_KISS() % limit;
 }
 
+#define FLOAT_SIGNIFICANT_DIGITS 6
+static const unsigned int RAND_FLOAT_MAX =
+		(unsigned int)pow(10, FLOAT_SIGNIFICANT_DIGITS - 1);
+float rand_float()
+{
+	unsigned int num = rand_limit(RAND_FLOAT_MAX);
+	return num / (float)RAND_FLOAT_MAX;
+}
+
 /*
  * Returns a pseudo-random boolean value based on the current sequence.
  * Θ(1)

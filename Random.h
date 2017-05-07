@@ -8,6 +8,7 @@ Version: 1.0
 #pragma once
 
 #include <stdbool.h>
+#include <math.h>
 
 /* Seeds this pseudo-random number generator with a provided value. */
 void rand_seed(const unsigned int seed);

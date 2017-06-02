@@ -41,9 +41,11 @@ unsigned int rand_limit(const unsigned int limit)
 	return rand_KISS() % limit;
 }
 
-#define FLOAT_SIGNIFICANT_DIGITS 6
-static const unsigned int RAND_FLOAT_MAX =
-		(unsigned int)pow(10, FLOAT_SIGNIFICANT_DIGITS - 1);
+#define RAND_FLOAT_MAX 1000000
+/*
+ * Returns a pseudo-random float in the domain of [0, 1].
+ * Θ(1)
+ */
 float rand_float()
 {
 	unsigned int num = rand_limit(RAND_FLOAT_MAX);

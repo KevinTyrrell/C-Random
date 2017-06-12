@@ -79,7 +79,7 @@ static unsigned int rand_KISS()
 	y ^= (y << 5);
 
 	t = a * z + c;
-	c = (t >> 32);
+	c = (unsigned int)(t >> 32);
 
 	return x + y + (z = (unsigned int)t);
 }

@@ -2,7 +2,6 @@
 /*
  * Author: Kevin Tyrrell
  * Date: 4/04/2017
- * Version: 1.1
  */
 
 #pragma once

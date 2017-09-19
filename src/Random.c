@@ -1,5 +1,5 @@
 ﻿
-#include "Random.h"
+#include "../include/Random.h"
 
 /* Local functions. */
 static unsigned int rand_KISS();

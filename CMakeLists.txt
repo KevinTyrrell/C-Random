@@ -2,35 +2,32 @@
 # Throw a fatal error if version is < 3.6.
 cmake_minimum_required (VERSION 3.6 FATAL_ERROR)
 
-# Setup name for project.
-set(PROJECT_NAME random)
 # Variables used to represent the version.
-set (RANDOM_VERSION_MAJOR 2)
+set (RANDOM_PROJECT_NAME C-Random)
+set (RANDOM_VERSION_MAJOR 3)
 set (RANDOM_VERSION_MINOR 0)
 set (RANDOM_VERSION_PATCH 0)
-# Type of build.
-set(CMAKE_BUILD_TYPE Release)
-# Set the project source dir (just convention)
-set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-# Setup the list of source file(s).
-set(SOURCES
-        ${SOURCE_DIR}/Random.c)
-# Setup the list of header file(s).
-set(HEADERS
-        ${INCLUDE_DIR}/Random.h)
+set (RANDOM_VERSION_STR "${RANDOM_VERSION_MAJOR}.${RANDOM_VERSION_MINOR}.${RANDOM_VERSION_PATCH}")
 
-# Project name and programming language.
-project(${PROJECT_NAME} C)
+# Build type.
+set (RANDOM_CMAKE_BUILD_TYPE Release)
+
+# Set the project source dir (just convention)
+set (RANDOM_SOURCE_DIR src)
+set (RANDOM_INCLUDE_DIR include)
+
+# Source files for compiling.
+set (RANDOM_SOURCES
+        ${RANDOM_SOURCE_DIR}/Random.c)
 
 # Send the variables (version number) to source code header
+set (RANDOM_CONFIG_FILE Config.h)
 configure_file (
-        "Config.h.in"
-        "${INCLUDE_DIR}/Config.h"
-)
+        "${RANDOM_CONFIG_FILE}.in"
+        "${RANDOM_INCLUDE_DIR}/${RANDOM_CONFIG_FILE}")
 
-# Include directories.
-include_directories(${INCLUDE_DIR})
+# Project setup.
+project(${RANDOM_PROJECT_NAME} C)
+# Add the library to be linked.
+add_library(${RANDOM_PROJECT_NAME} STATIC ${RANDOM_SOURCES})
 
-# Create the static library.
-add_library(RANDOM_LIB SHARED ${SOURCES})

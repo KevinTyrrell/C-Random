@@ -10,7 +10,7 @@ set (RANDOM_VERSION_PATCH 0)
 set (RANDOM_VERSION_STR "${RANDOM_VERSION_MAJOR}.${RANDOM_VERSION_MINOR}.${RANDOM_VERSION_PATCH}")
 
 # Build type.
-set (RANDOM_CMAKE_BUILD_TYPE Release)
+set (CMAKE_BUILD_TYPE Release)
 
 # Set the project source dir (just convention)
 set (RANDOM_SOURCE_DIR src)
